@@ -1,6 +1,4 @@
 # app.py — thêm webhook route + socketio
-from gevent import monkey
-monkey.patch_all()
 
 import os
 from datetime import datetime, timezone, timedelta
@@ -66,11 +64,9 @@ def handle_order_breach(request_limit: RequestLimit):
 # Đổi async_mode
 socketio = SocketIO(
     app,
-    cors_allowed_origins=CORS_ORIGINS.split(",") if CORS_ORIGINS else "*",
-    message_queue=REDIS_URL,
-    async_mode="gevent",  # đổi từ eventlet
+    cors_allowed_origins="*",
+    async_mode="threading"
 )
-
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})
