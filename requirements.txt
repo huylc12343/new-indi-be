@@ -10,3 +10,5 @@ weasyprint==68.1
 Flask-Limiter[redis]==4.1.1
 gevent==24.2.1
 gevent-websocket==0.10.1
+Flask-SocketIO==5.3.6
+eventlet==0.36.1
