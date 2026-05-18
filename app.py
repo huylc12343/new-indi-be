@@ -7,7 +7,6 @@ from datetime import datetime, timezone, timedelta
 import asyncio
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask_socketio import SocketIO, join_room
 from redis import Redis
 from rq import Queue
 from nanoid import generate
@@ -64,12 +63,7 @@ def handle_order_breach(request_limit: RequestLimit):
 
 # Socket.IO — dùng Redis làm message queue để hoạt động đúng khi multi-instance
 # Đổi async_mode
-socketio = SocketIO(
-    app,
-    cors_allowed_origins=CORS_ORIGINS.split(",") if CORS_ORIGINS else "*",
-    message_queue=REDIS_URL,
-    async_mode="gevent",  # đổi từ eventlet
-)
+
 
 @app.route("/health", methods=["GET"])
 def health():
