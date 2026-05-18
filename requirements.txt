@@ -8,3 +8,5 @@ flask-cors==6.0.2
 qrcode[pil]==8.2
 weasyprint==68.1
 Flask-Limiter[redis]==4.1.1
+gevent==24.2.1
+gevent-websocket==0.10.1
