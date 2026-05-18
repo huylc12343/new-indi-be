@@ -1,6 +1,5 @@
 # app.py — thêm webhook route + socketio
-from gevent import monkey
-monkey.patch_all()
+
 
 import os
 from datetime import datetime, timezone, timedelta
